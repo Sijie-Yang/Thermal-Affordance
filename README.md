@@ -103,8 +103,11 @@ VATA predictions are validated against real-world OTC data collected through fie
 
 ## Methodology Summary
 
-![Research Framework](./docs/img/fig3_research_framework.png)
+<div align="center">
+<img src="./docs/img/fig3_research_framework.png" alt="Research Framework" width="650"/>
+
 *Figure 3: Research framework and methodology*
+</div>
 
 - **Study Area**: Singapore (chosen for its diverse urban forms and consistent tropical climate).
 - **SVI Survey**: 500 representative SVIs (selected via k-means clustering of 92,233 images) were evaluated by 176 participants in an online survey. Participants made pairwise comparisons for VATA and 19 VPIs. TrueSkill algorithm converted comparisons into scores (0-5 scale).
@@ -123,8 +126,11 @@ The MTNNL model achieved superior performance (Adjusted R² = 0.7316) compared t
 - A multivariate model combining VATA with physiological/environmental data (Heart rate, Solar intensity, Noise, Altitude - HSNA) explained significantly more variance in comfort (Adjusted R² = 0.889) than using IFs + HSNA (Adjusted R² = 0.778) or HSNA alone (Adjusted R² = 0.596).
 
 ### VATA Mapping
-![VATA Mapping](./docs/img/fig10_result_VATA_mapping.png)
+<div align="center">
+<img src="./docs/img/fig10_result_VATA_mapping.png" alt="VATA Mapping" width="650"/>
+
 *Figure 10: High-resolution VATA map of Singapore*
+</div>
 
 We generated a high-resolution map of VATA across Singapore, aggregated into hexagonal units. This map visually identifies areas with high (e.g., parks like Windsor Nature Park, East Coast Park) and low (e.g., parts of Choa Chu Kang) thermal affordance, guiding potential interventions.
 
@@ -149,8 +155,11 @@ The ENRM model (Adjusted R² = 0.744) revealed key factors:
 
 ## Discussion & Significance
 
-![Discussion of VATA Framework](./docs/img/fig13_discussion_VATA_framework_revision.png)
+<div align="center">
+<img src="./docs/img/fig13_discussion_VATA_framework_revision.png" alt="Discussion of VATA Framework" width="650"/>
+
 *Figure 13: Discussion of the VATA framework's significance and applications*
+</div>
 
 The VATA framework provides a scalable, cost-effective, and validated method for assessing urban thermal affordance.
 
