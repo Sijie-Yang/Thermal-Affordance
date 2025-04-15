@@ -19,6 +19,7 @@
 [![Preprint](https://img.shields.io/badge/📥-Preprint_PDF-blue)](https://arxiv.org/pdf/2410.11887)
 [![Website](https://img.shields.io/badge/🌐-Project_Website-blue)](https://thermal-affordance.ual.sg)
 [![Blog](https://img.shields.io/badge/📝-Blog_Post-blue)](https://sijie-yang.com/blog/2025/thermal-comfort/)
+[![Blog](https://img.shields.io/badge/🔬-Lab_Post-blue)](https://ual.sg/post/2025/01/25/new-paper-thermal-comfort-in-sight/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 </div>
@@ -31,7 +32,7 @@
 <img src="./docs/img/SEC Logo.jpg" alt="SEC Logo" width="200"/>
 <img src="./docs/img/Ideas Logo.png" alt="Ideas Logo" width="120"/>
 </div>
-<a href="https://ual.sg">Urban Analytics Lab</a> | <a href="https://nus.edu.sg">National University of Singapore</a>
+<a href="https://ual.sg">Urban Analytics Lab</a> | <a href="https://ideaslab.io">Ideas Lab</a> | <a href="https://sec.ethz.ch">Singapore-ETH Centre</a>
 </div>
 
 ## Introduction: The Challenge of Urban Heat
@@ -61,6 +62,12 @@ There's a lack of a robust, replicable workflow integrating multi-source data (S
 
 ## The Idea of Thermal Affordance
 
+<div align="center">
+<img src="./docs/img/fig1_vata_concept.png" alt="Thermal Affordance Concept" width="500"/>
+
+*Figure 1: Conceptual illustration of Thermal Affordance*
+</div>
+
 Thermal Affordance refers to the inherent capability of an environment (like a streetscape) to impact thermal comfort, integrating various environmental factors. It aims to be:
 
 - **Unified**: Encompassing all relevant fixed environmental variables.
@@ -71,6 +78,12 @@ Thermal Affordance refers to the inherent capability of an environment (like a s
 - **Expandable**: Allowing incorporation of additional variables over time.
 
 ## The VATA Framework
+
+<div align="center">
+<img src="./docs/img/fig2_vata_framework.png" alt="VATA Framework" width="500"/>
+
+*Figure 2: The VATA Framework for assessing thermal affordance*
+</div>
 
 The VATA framework addresses the challenges of traditional OTC evaluation. It leverages the connection between visual data (SVI), human perception, and thermal comfort.
 
@@ -90,6 +103,9 @@ VATA predictions are validated against real-world OTC data collected through fie
 
 ## Methodology Summary
 
+![Research Framework](./docs/img/fig3_research_framework.png)
+*Figure 3: Research framework and methodology*
+
 - **Study Area**: Singapore (chosen for its diverse urban forms and consistent tropical climate).
 - **SVI Survey**: 500 representative SVIs (selected via k-means clustering of 92,233 images) were evaluated by 176 participants in an online survey. Participants made pairwise comparisons for VATA and 19 VPIs. TrueSkill algorithm converted comparisons into scores (0-5 scale).
 - **IF Extraction**: 5 categories of IFs (52 sub-features total) were extracted from SVIs using models like DeepLabV3+, ResNet-50, and Faster R-CNN.
@@ -107,6 +123,9 @@ The MTNNL model achieved superior performance (Adjusted R² = 0.7316) compared t
 - A multivariate model combining VATA with physiological/environmental data (Heart rate, Solar intensity, Noise, Altitude - HSNA) explained significantly more variance in comfort (Adjusted R² = 0.889) than using IFs + HSNA (Adjusted R² = 0.778) or HSNA alone (Adjusted R² = 0.596).
 
 ### VATA Mapping
+![VATA Mapping](./docs/img/fig10_result_VATA_mapping.png)
+*Figure 10: High-resolution VATA map of Singapore*
+
 We generated a high-resolution map of VATA across Singapore, aggregated into hexagonal units. This map visually identifies areas with high (e.g., parks like Windsor Nature Park, East Coast Park) and low (e.g., parts of Choa Chu Kang) thermal affordance, guiding potential interventions.
 
 ### Inference Model Insights
@@ -129,6 +148,9 @@ The ENRM model (Adjusted R² = 0.744) revealed key factors:
 - Perceived traffic flow/complexity/boredom
 
 ## Discussion & Significance
+
+![Discussion of VATA Framework](./docs/img/fig13_discussion_VATA_framework_revision.png)
+*Figure 13: Discussion of the VATA framework's significance and applications*
 
 The VATA framework provides a scalable, cost-effective, and validated method for assessing urban thermal affordance.
 
