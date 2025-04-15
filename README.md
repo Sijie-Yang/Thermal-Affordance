@@ -17,7 +17,7 @@
 
 [![Paper](https://img.shields.io/badge/📄-Published_Paper-blue)](https://www.sciencedirect.com/science/article/pii/S0360132325000514)
 [![Preprint](https://img.shields.io/badge/📥-Preprint_PDF-blue)](https://arxiv.org/pdf/2410.11887)
-[![Website](https://img.shields.io/badge/🌐-Project_Website-blue)](https://thermal-affordance.ual.sg)
+[![Website](https://img.shields.io/badge/🌐-Project_Website_&_Dataset-blue)](https://thermal-affordance.ual.sg)
 [![Blog](https://img.shields.io/badge/📝-Blog_Post-blue)](https://sijie-yang.com/blog/2025/thermal-comfort/)
 [![Blog](https://img.shields.io/badge/🔬-Lab_Post-blue)](https://ual.sg/post/2025/01/25/new-paper-thermal-comfort-in-sight/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
