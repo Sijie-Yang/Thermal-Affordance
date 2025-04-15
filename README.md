@@ -35,6 +35,21 @@
 <a href="https://ual.sg">Urban Analytics Lab</a> | <a href="https://ideaslab.io">Ideas Lab</a> | <a href="https://sec.ethz.ch">Singapore-ETH Centre</a>
 </div>
 
+## News
+
+- **2025-04-15**: 1st version of Github page updated.
+- **2025-01-22**: Paper available online in Building and Environment journal.
+- **2024-10-12**: 1st version preprint available on arXiv.
+
+## Todo
+
+- [ ] Update one-click Python plugin for thermal affordance evaluation based on SVI.
+- [ ] Update partial survey results and sample code of this study.
+- [ ] Update predicted datasets for 10 southeast asia cities.
+- [ ] Update predicted datasets for 10 global cities.
+- [ ] Update Tutorial on how to download SVIs with ZenSVI and predict thermal affordance with our study.
+
+
 ## Introduction: The Challenge of Urban Heat
 
 The intensifying Urban Heat Island (UHI) effect poses significant challenges to cities worldwide. It drives extreme climate changes, increases energy consumption for cooling, and degrades public health by worsening air quality and reducing outdoor thermal comfort (OTC). OTC, defined as one's subjective satisfaction with urban thermal conditions, is critical for urban livability. Poor OTC can lead to heat-related illnesses and even affect mental health.
