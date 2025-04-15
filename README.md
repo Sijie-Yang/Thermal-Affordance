@@ -25,11 +25,11 @@
 
 <div align="center">
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-<img src="./docs/img/DoA Logo.jpg" alt="DoA Logo" width="150"/>
-<img src="./docs/img/UAL Logo.jpg" alt="UAL Logo" width="150"/>
+<img src="./docs/img/DoA Logo.jpg" alt="DoA Logo" width="120"/>
+<img src="./docs/img/UAL Logo.jpg" alt="UAL Logo" width="120"/>
 <img src="./docs/img/Penn Logo.png" alt="Penn Logo" width="150"/>
-<img src="./docs/img/SEC Logo.jpg" alt="SEC Logo" width="150"/>
-<img src="./docs/img/Ideas Logo.png" alt="Ideas Logo" width="150"/>
+<img src="./docs/img/SEC Logo.jpg" alt="SEC Logo" width="200"/>
+<img src="./docs/img/Ideas Logo.png" alt="Ideas Logo" width="120"/>
 </div>
 <a href="https://ual.sg">Urban Analytics Lab</a> | <a href="https://nus.edu.sg">National University of Singapore</a>
 </div>
