@@ -61,12 +61,12 @@ import urbancode as uc
 import pandas as pd
 import os
 
-# Set image path
-image_path = "./data/sample_images"  # Path to image folder
+# Set image folder path
+image_folder_path = "./data/sample_images"  # Path to image folder path
 
 # Process images using comfort function
 print("Starting image processing...")
-df = uc.svi.comfort(image_path, mode='folder')
+df = uc.svi.comfort(image_folder_path, mode='folder')
 
 # Save results to CSV file
 output_path = "./data/svi_comfort_prediction_results.csv"
