@@ -15,11 +15,13 @@
 
 <div align="center">
 
-[![Paper](https://img.shields.io/badge/📄-Published_Paper-blue)](https://www.sciencedirect.com/science/article/pii/S0360132325000514)
-[![Preprint](https://img.shields.io/badge/📥-Preprint_PDF-blue)](https://arxiv.org/pdf/2410.11887)
+[![Paper](https://img.shields.io/badge/📄-Published_Paper-9cf)](https://www.sciencedirect.com/science/article/pii/S0360132325000514)
+[![Preprint](https://img.shields.io/badge/📥-Preprint_PDF-9cf)](https://arxiv.org/pdf/2410.11887)
 [![Website](https://img.shields.io/badge/🌐-Project_Website_&_Dataset-blue)](https://thermal-affordance.ual.sg)
-[![Blog](https://img.shields.io/badge/📝-Blog_Post-blue)](https://sijie-yang.com/blog/2025/thermal-comfort/)
-[![Blog](https://img.shields.io/badge/🔬-Lab_Post-blue)](https://ual.sg/post/2025/01/25/new-paper-thermal-comfort-in-sight/)
+[![Blog](https://img.shields.io/badge/📝-Blog_Post-green)](https://sijie-yang.com/blog/2025/thermal-comfort/)
+[![Blog](https://img.shields.io/badge/🔬-Lab_Post-green)](https://ual.sg/post/2025/01/25/new-paper-thermal-comfort-in-sight/)
+[![Model](https://img.shields.io/badge/🤗-HuggingFace_Model-orange)](https://huggingface.co/sijiey/Thermal-Affordance-Model)
+[![Dataset](https://img.shields.io/badge/📊-HuggingFace_Dataset-orange)](https://huggingface.co/datasets/sijiey/Thermal-Affordance-Dataset)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 </div>
@@ -37,18 +39,77 @@
 
 ## News
 
+- **2025-04-16**: Added UrbanCode integration for thermal comfort prediction.
 - **2025-04-15**: 1st version of Github page updated.
 - **2025-01-22**: Paper available online in Building and Environment journal.
 - **2024-10-12**: 1st version preprint available on arXiv.
 
+## Usage
+
+### Installation
+
+```bash
+pip install urbancode
+```
+
+### Quick Start: Thermal Comfort Prediction
+
+Here's a simple example of how to predict thermal comfort scores using street view images. You can find the complete example in `examples/test_svi_comfort_prediction.ipynb`:
+
+```python
+import urbancode as uc
+import pandas as pd
+import os
+
+# Set image path
+image_path = "./data/sample_images"  # Path to image folder
+
+# Process images using comfort function
+print("Starting image processing...")
+df = uc.svi.comfort(image_path, mode='folder')
+
+# Save results to CSV file
+output_path = "./data/svi_comfort_prediction_results.csv"
+df.to_csv(output_path, index=False)
+print(f"Results saved to: {output_path}")
+
+# Display results preview
+print("\nResults preview:")
+print(df.head())
+```
+
+The comfort function returns a DataFrame with the following perception metrics (normalized to 0-5 range):
+- thermal_comfort
+- visual_comfort
+- temp_intensity
+- sun_intensity
+- humidity_inference
+- wind_inference
+- traffic_flow
+- greenery_rate
+- shading_area
+- material_comfort
+- imageability
+- enclosure
+- human_scale
+- transparency
+- complexity
+- safe
+- lively
+- beautiful
+- wealthy
+- boring
+- depressing
+
+For more detailed examples and documentation, please visit the [UrbanCode repository](https://github.com/Sijie-Yang/UrbanCode).
+
 ## Todo
 
-- [ ] Update one-click Python plugin for thermal affordance evaluation based on SVI.
+- [x] Update one-click Python plugin for thermal affordance evaluation based on SVI.
 - [ ] Update partial survey results and sample code of this study.
 - [ ] Update predicted datasets for 10 southeast asia cities.
 - [ ] Update predicted datasets for 10 global cities.
 - [ ] Update Tutorial on how to download SVIs with ZenSVI and predict thermal affordance with our study.
-
 
 ## Introduction: The Challenge of Urban Heat
 
