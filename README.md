@@ -1,4 +1,4 @@
-# <div align="center">Thermal Comfort in Sight: Thermal Affordance and Its Visual Assessment</div>
+# <div align="center">Thermal Comfort in Sight: Thermal Affordance and Its Visual Assessment (VATA)</div>
 
 <div align="center">
 
