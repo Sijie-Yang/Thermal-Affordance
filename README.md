@@ -2,7 +2,7 @@
 
 > **The inherent capacity of built environment to influence human thermal comfort based on its morphological and physical features.**
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://ta.sijie-yang.com)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://thermal-affordance.ual.sg)
 [![Paper](https://img.shields.io/badge/Paper-Building%20and%20Environment-blue)](https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black)](https://github.com/Sijie-Yang/VATA)
 
@@ -23,11 +23,11 @@ This repository hosts the official website and portal for Thermal Affordance res
 
 - [📄 Paper](https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514)
 - [💻 GitHub Repository](https://github.com/Sijie-Yang/VATA)
-- [🗺️ Interactive Website](https://ta.sijie-yang.com)
+- [🗺️ Interactive Website](https://thermal-affordance.ual.sg)
 
 ## 🌐 Website
 
-Visit our interactive website: **[ta.sijie-yang.com](https://ta.sijie-yang.com)**
+Visit our interactive website: **[thermal-affordance.ual.sg](https://thermal-affordance.ual.sg)**
 
 The website features:
 - **Concept Description** - Understanding thermal affordance and VATA framework
@@ -43,7 +43,7 @@ Download thermal affordance datasets for research purposes:
 - **Singapore Dataset** - VATA perception points for Singapore
 - **Multi-city Dataset** - Coming soon
 
-Visit the [Dataset & Mapping](https://ta.sijie-yang.com/#map) section on our website for downloads.
+Visit the [Dataset & Mapping](https://thermal-affordance.ual.sg/#map) section on our website for downloads.
 
 ## 👥 Research Team
 
@@ -54,7 +54,7 @@ Visit the [Dataset & Mapping](https://ta.sijie-yang.com/#map) section on our web
 
 ## 📚 Related Research
 
-Our research builds on and contributes to the growing field of thermal comfort assessment in urban environments. Check out the [In Research](https://ta.sijie-yang.com/#research) section on our website for a comprehensive list of related publications.
+Our research builds on and contributes to the growing field of thermal comfort assessment in urban environments. Check out the [In Research](https://thermal-affordance.ual.sg/#research) section on our website for a comprehensive list of related publications.
 
 ## 🔧 Technical Details
 
@@ -98,7 +98,7 @@ If you use our work in your research, please cite:
 
 ## 🔗 Links
 
-- 🌐 **Website**: [ta.sijie-yang.com](https://ta.sijie-yang.com)
+- 🌐 **Website**: [thermal-affordance.ual.sg](https://thermal-affordance.ual.sg)
 - 📄 **Paper**: [Building and Environment](https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514)
 - 💻 **Code**: [GitHub Repository](https://github.com/Sijie-Yang/VATA)
 - 🏢 **Lab**: [Urban Analytics Lab](https://ual.sg)
