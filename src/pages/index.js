@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import CitySelector from "../components/CitySelector"
 import Map from "../components/Map"
 import { StaticImage } from "gatsby-plugin-image"
+import { researchPapers } from "../data/research-papers"
 
 // Styled components
 const PageContainer = styled.div`
@@ -21,6 +22,12 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   scroll-margin-top: 90px;
+  
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
 `
 
 const HomeSection = styled(Section)`
@@ -37,6 +44,12 @@ const HomeSection = styled(Section)`
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 2;
   }
+  
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 70vh;
+    padding: 2rem 0;
+  }
 `
 
 const MovingBackground = styled.div`
@@ -45,7 +58,7 @@ const MovingBackground = styled.div`
   left: 0;
   width: 200%; // 宽度设为两倍
   height: 100%;
-  background-image: url(${props => props.backgroundImage});
+  background-image: url(${props => props.$backgroundImage});
   background-size: 50% 100%; // 每个图片50%宽度
   background-position: 0 0, 100% 0;
   background-repeat: repeat-x;
@@ -66,6 +79,14 @@ const ConceptSection = styled(Section)`
   justify-content: space-between;
   align-items: stretch;
   padding: 2rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
 `
 
 const MapSection = styled(Section)`
@@ -73,6 +94,11 @@ const MapSection = styled(Section)`
   height: auto;
   min-height: 80vh;
   padding: 2rem 0;
+  
+  @media (max-width: 768px) {
+    min-height: auto;
+    padding: 1rem 0;
+  }
 `
 
 const MapContainer = styled.div`
@@ -86,6 +112,11 @@ const MapContainer = styled.div`
   gap: 1rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+    gap: 0.75rem;
+  }
 `
 
 const MapWrapper = styled.div`
@@ -93,6 +124,14 @@ const MapWrapper = styled.div`
   height: 550px;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+  
+  @media (max-width: 480px) {
+    height: 300px;
+  }
 `
 
 const DownloadSection = styled.div`
@@ -103,6 +142,11 @@ const DownloadSection = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   max-width: 300px;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 `
 
 const DownloadButton = styled.a`
@@ -110,7 +154,7 @@ const DownloadButton = styled.a`
   font-size: 0.9rem;
   border-radius: 4px;
   border: none;
-  background-color: ${props => props.primary ? '#0066cc' : '#4d94ff'};
+  background-color: ${props => props.$primary ? '#0066cc' : '#4d94ff'};
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -119,7 +163,7 @@ const DownloadButton = styled.a`
   width: 100%;
 
   &:hover {
-    background-color: ${props => props.primary ? '#0052a3' : '#3385ff'};
+    background-color: ${props => props.$primary ? '#0052a3' : '#3385ff'};
   }
 
   &.disabled {
@@ -127,62 +171,195 @@ const DownloadButton = styled.a`
     cursor: not-allowed;
     pointer-events: none;
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
 `
 
 const ContentWrapper = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1.5rem 2rem;
+  text-align: left;
   position: relative;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.8); // 半透明白色背景
   border-radius: 10px;
   color: black; // 文字颜色改为黑色
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin: 0 0.5rem;
+  }
 `
 
 const Title = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 0.8rem;
   color: black; // 确保标题是黑色
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+`
+
+const Definition = styled.p`
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `
 
 const Subtitle = styled.h2`
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: 0.4rem;
   color: black; // 确保副标题是黑色
+  line-height: 1.5;
+  font-weight: normal;
+  text-align: justify;
+  width: 100%;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `
 
 const Authors = styled.p`
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: black;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `
 
 const Affiliation = styled.p`
   font-size: 0.9rem;
   margin-bottom: 0.1rem;
   color: black;
+  
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 `
 
 const Email = styled.p`
   font-size: 0.9rem;
   margin-bottom: 2rem;
   color: black;
+  
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+`
+
+const CorePaperContainer = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+`
+
+const CorePaperList = styled.div`
+  width: 100%;
+`
+
+const CorePaperItem = styled.div`
+  margin-bottom: 1.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+
+const CorePaperLink = styled.a`
+  color: #0066cc;
+  text-decoration: none;
+  margin: 0 0.3rem;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  &:first-child {
+    margin-left: 0.5rem;
+  }
+`
+
+const CorePaperLabel = styled.strong`
+  font-weight: bold;
+`
+
+const JournalName = styled.span`
+  font-style: italic;
 `
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `
 
-const Button = styled(Link)`
+const Button = styled.a`
   padding: 0.5rem 1rem;
   background-color: #f0f0f0;
   text-decoration: none;
   color: black;
   border-radius: 4px;
+  display: inline-block;
+  &:hover {
+    background-color: #e0e0e0;
+  }
+`
+
+const InternalButton = styled(Link)`
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  text-decoration: none;
+  color: black;
+  border-radius: 4px;
+  display: inline-block;
   &:hover {
     background-color: #e0e0e0;
   }
@@ -199,15 +376,41 @@ const LeftColumn = styled(Column)`
   padding-right: 4rem;
   padding-left: 4rem;
   text-align: justify;
+  
+  @media (max-width: 768px) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: left;
+  }
 `
 
 const RightColumn = styled(Column)`
   align-items: center;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
+`
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  max-width: 500px;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 `
 
 const Description = styled.p`
   font-size: 0.8rem;
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 `
 
 const ConceptSubtitle = styled.h3`
@@ -215,10 +418,129 @@ const ConceptSubtitle = styled.h3`
   margin-bottom: 0.8rem;
   line-height: 1.3;
   text-align: left;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
 `
 
 const BoldText = styled.span`
   font-weight: bold;
+`
+
+const ResearchSection = styled(Section)`
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  height: auto;
+  min-height: auto;
+  
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
+`
+
+const ResearchContainer = styled.div`
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+`
+
+const ResearchTitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: black;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+`
+
+const ResearchList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+`
+
+const ResearchItem = styled.div`
+  background-color: #f9f9f9;
+  padding: 0.7rem 0.9rem;
+  border-radius: 4px;
+  border-left: 3px solid #0066cc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.8rem;
+  }
+`
+
+const ResearchItemTitle = styled.h3`
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #0066cc;
+  line-height: 1.3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`
+
+const ResearchItemLink = styled.a`
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const ResearchItemAuthors = styled.p`
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+  
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+`
+
+const ResearchItemVenue = styled.span`
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+  line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+`
+
+const ResearchItemYear = styled.span`
+  font-size: 0.75rem;
+  color: #999;
+  
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 `
 
 const TeamSection = styled(Section)`
@@ -226,6 +548,11 @@ const TeamSection = styled(Section)`
   padding: 2rem 0;
   height: auto;
   min-height: 60vh;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 0;
+    min-height: auto;
+  }
 `
 
 const TeamGrid = styled.div`
@@ -237,6 +564,15 @@ const TeamGrid = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `
 
 const TeamMember = styled.div`
@@ -251,13 +587,6 @@ const TeamMember = styled.div`
   height: 100%;
 `
 
-const MemberImage = styled.img`
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 0.8rem;
-  object-fit: cover;
-`
 
 const MemberName = styled.h3`
   font-size: 1rem;
@@ -333,6 +662,12 @@ const DataAvailabilityMessage = styled.p`
   margin-bottom: 1rem;
   font-style: italic;
   color: #666;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
 `
 
 // 在其他样式组件之后添加
@@ -353,6 +688,11 @@ const TeamTitle = styled.h1`
   font-size: 1.5rem; // 从2.5rem减小
   margin-bottom: 1.5rem;
   color: black;
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 `
 
 // Main component
@@ -406,25 +746,36 @@ const IndexPage = () => {
     <Layout>
       <PageContainer>
         <HomeSection id="home">
-          <MovingBackground backgroundImage={data.file.publicURL} />
+          <MovingBackground $backgroundImage={data.file.publicURL} />
           <ContentWrapper>
             <Title>Thermal Affordance</Title>
-            <Subtitle>Thermal Comfort in Sight: Thermal Affordance and Its Visual Assessment</Subtitle>
-            <Authors>
-              Sijie Yang <sup>a,b</sup>, Adrian Chong <sup>c</sup>, Pengyuan Liu <sup>d</sup>, Filip Biljecki <sup>a,e,*</sup>
-            </Authors>
-            {/* Affiliations */}
-            <Affiliation>a Department of Architecture, National University of Singapore</Affiliation>
-            <Affiliation>b School of Engineering and Applied Science, University of Pennsylvania</Affiliation>
-            <Affiliation>c Department of Built Environment, National University of Singapore</Affiliation>
-            <Affiliation>d Future Cities Lab Global, Singapore-ETH Centre</Affiliation>
-            <Affiliation>e Department of Real Estate, National University of Singapore</Affiliation>
-            <Email>* filip@nus.edu.sg</Email>
-            <ButtonContainer>
-              <Button to="https://github.com/Sijie-Yang/VATA">Github</Button>
-              <Button to="https://arxiv.org/abs/2410.11887">Paper</Button>
-              <Button to="/dataset">Dataset</Button>
-            </ButtonContainer>
+            <Definition>
+              The inherent capacity of built environment to influence human thermal comfort based on its morphological and physical features.
+            </Definition>
+            <CorePaperContainer>
+              <CorePaperList>
+                <CorePaperItem>
+                  <Subtitle>
+                    <CorePaperLabel>Core Paper - Thermal Comfort in Sight</CorePaperLabel> - 
+                    [<CorePaperLink href="https://github.com/Sijie-Yang/VATA" target="_blank" rel="noopener noreferrer">Github</CorePaperLink>] 
+                    [<CorePaperLink href={researchPapers[0].link} target="_blank" rel="noopener noreferrer">Paper</CorePaperLink>] 
+                    [<CorePaperLink as={Link} to="/dataset">Dataset</CorePaperLink>]
+                    - Yang, S., Chong, A., Liu, P., & Biljecki, F. (2025). Thermal comfort in sight: Thermal affordance and its visual assessment for sustainable streetscape design. <JournalName>Building and Environment</JournalName>, 271, 112569.
+                  </Subtitle>
+                </CorePaperItem>
+                {/* Add more Core Papers here:
+                <CorePaperItem>
+                  <Subtitle>
+                    Core Paper - Author, A., Author, B. (Year). Paper title. Journal, Volume, Pages.
+                  </Subtitle>
+                  <CorePaperButtons>
+                    <Button href="link1" target="_blank" rel="noopener noreferrer">Button 1</Button>
+                    <Button href="link2" target="_blank" rel="noopener noreferrer">Button 2</Button>
+                  </CorePaperButtons>
+                </CorePaperItem>
+                */}
+              </CorePaperList>
+            </CorePaperContainer>
           </ContentWrapper>
         </HomeSection>
         
@@ -448,25 +799,29 @@ const IndexPage = () => {
             </Description>
           </LeftColumn>
           <RightColumn>
-            <StaticImage
-              src="../images/VATA_framework.png"
-              alt="Research framework of thermal affordance"
-              placeholder="blurred"
-              layout="constrained"
-              width={400}
-            />
+            <ImageWrapper>
+              <StaticImage
+                src="../images/VATA_framework.png"
+                alt="Research framework of thermal affordance"
+                placeholder="blurred"
+                layout="constrained"
+                width={400}
+              />
+            </ImageWrapper>
           </RightColumn>
         </ConceptSection>
         
         <PropertySection id="property">
           <RightColumn> 
-            <StaticImage
-              src="../images/VATA_concept.png"
-              alt="Property of thermal affordance"
-              placeholder="blurred"
-              layout="constrained"
-              width={400}
-            />
+            <ImageWrapper>
+              <StaticImage
+                src="../images/VATA_concept.png"
+                alt="Property of thermal affordance"
+                placeholder="blurred"
+                layout="constrained"
+                width={400}
+              />
+            </ImageWrapper>
           </RightColumn>
           <LeftColumn>  
             <ConceptSubtitle>Properties of Thermal Affordance</ConceptSubtitle>
@@ -507,13 +862,15 @@ const IndexPage = () => {
             </Description>
           </LeftColumn>
           <RightColumn>
-            <StaticImage
-              src="../images/method_framework.png"
-              alt="Computational framework of VATA"
-              placeholder="blurred"
-              layout="constrained"
-              width={500}
-            />
+            <ImageWrapper>
+              <StaticImage
+                src="../images/method_framework.png"
+                alt="Computational framework of VATA"
+                placeholder="blurred"
+                layout="constrained"
+                width={500}
+              />
+            </ImageWrapper>
           </RightColumn>
         </MethodSection>
         
@@ -531,13 +888,15 @@ const IndexPage = () => {
             </Description>
           </LeftColumn>
           <RightColumn>
-            <StaticImage
-                src="../images/result_VATA mapping.png"
-                alt="VATA mapping for urban planning"
-                placeholder="blurred"
-                layout="constrained"
-                width={500}
-            />
+            <ImageWrapper>
+              <StaticImage
+                  src="../images/result_VATA_mapping.png"
+                  alt="VATA mapping for urban planning"
+                  placeholder="blurred"
+                  layout="constrained"
+                  width={500}
+              />
+            </ImageWrapper>
           </RightColumn>
         </PlanningSection>
         
@@ -556,7 +915,7 @@ const IndexPage = () => {
               <DownloadButton 
                 href="/data/all_cities_thermal_affordance.zip"
                 className="disabled"
-                primary
+                $primary
                 download
               >
                 Download All Cities Dataset
@@ -567,6 +926,32 @@ const IndexPage = () => {
             </MapWrapper>
           </MapContainer>
         </MapSection>
+        
+        <ResearchSection id="research">
+          <ResearchContainer>
+            <ResearchTitle>Thermal Affordance in Research</ResearchTitle>
+            <ResearchList>
+              {researchPapers.map((paper) => (
+                <ResearchItem key={paper.id}>
+                  <ResearchItemTitle>
+                    <ResearchItemLink 
+                      href={paper.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      {paper.title}
+                    </ResearchItemLink>
+                    <ResearchItemVenue>{paper.venue}</ResearchItemVenue>
+                    <ResearchItemYear>{paper.year}</ResearchItemYear>
+                  </ResearchItemTitle>
+                  <ResearchItemAuthors>
+                    {paper.authors}
+                  </ResearchItemAuthors>
+                </ResearchItem>
+              ))}
+            </ResearchList>
+          </ResearchContainer>
+        </ResearchSection>
         
         <TeamSection id="team">
           <ContentWrapper>
@@ -594,4 +979,9 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Thermal Affordance</title>
+export const Head = () => (
+  <>
+    <title>Thermal Affordance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </>
+)
