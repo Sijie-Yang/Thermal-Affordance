@@ -1,14 +1,36 @@
 // Research papers data for Thermal Affordance in Research section
 // Add new papers by adding objects to this array
 
+// Paper images: put files in static/research/ (e.g. paper_1.jpg, paper_2.jpg)
+// Image path is relative to static folder: use "/research/paper_1.jpg"
+// Ordered by year, newest first
 export const researchPapers = [
+  {
+    id: 3,
+    title: "Evaluating Greenery's Contribution to Urban Thermal Comfort in Hot Arid Climates: A Systematic Review",
+    authors: "Binabid J, Anteet Q, Alawwad R",
+    venue: "Sustainability",
+    year: "2026",
+    link: "https://www.mdpi.com/2071-1050/18/1/460",
+    image: "/research/paper_3.jpg"
+  },
+  {
+    id: 6,
+    title: "Visual determinants of outdoor thermal comfort: integrating explainable AI and perceptual assessments",
+    authors: "Zhu, L., Samuelson, H. W., Biljecki, F., Tan, C. L., Wong, N. H., & Ang, Y. Q.",
+    venue: "Building and Environment",
+    year: "2026",
+    link: "https://www.sciencedirect.com/science/article/pii/S0360132326001289",
+    image: "/research/paper_6.jpg"
+  },
   {
     id: 1,
     title: "Thermal Comfort in Sight: Thermal Affordance and Its Visual Assessment",
     authors: "Yang, S., Chong, A., Liu, P., & Biljecki, F.",
     venue: "Building and Environment",
     year: "2025",
-    link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514?via%3Dihub"
+    link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514?via%3Dihub",
+    image: "/research/paper_1.jpg"
   },
   {
     id: 2,
@@ -16,15 +38,8 @@ export const researchPapers = [
     authors: "Zhang, X., Chen, T., Zhang, S., Yuan, C., & Tan, P. Y.",
     venue: "Sustainable Cities and Society",
     year: "2025",
-    link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725005220"
-  },
-  {
-    id: 3,
-    title: "Evaluating Greenery's Contribution to Urban Thermal Comfort in Hot Arid Climates: A Systematic Review",
-    authors: "Binabid J, Anteet Q, Alawwad R",
-    venue: "Sustainability",
-    year: "2026",
-    link: "https://www.mdpi.com/2071-1050/18/1/460" // Add link when available
+    link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725005220",
+    image: "/research/paper_2.jpg"
   },
   {
     id: 4,
@@ -32,7 +47,8 @@ export const researchPapers = [
     authors: "Zou, K., Wong, M.S., Nazeer, M., Yu, X., Tan, G., Hou, H.C., Yang, J. and Chan, P.W.",
     venue: "Sustainable Cities and Society",
     year: "2025",
-    link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725009242" // Add link when available
+    link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725009242",
+    image: "/research/paper_4.jpg"
   },
   {
     id: 5,
@@ -40,16 +56,8 @@ export const researchPapers = [
     authors: "Shen, Z., Xie, D. and Su, C.",
     venue: "Building and Environment",
     year: "2025",
-    link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325014921" // Add link when available
-  },
-  // Add more papers here:
-  // {
-  //   id: 3,
-  //   title: "Paper Title",
-  //   authors: "Author 1, Author 2",
-  //   venue: "Journal/Conference Name",
-  //   year: "2025",
-  //   link: "https://example.com"
-  // },
+    link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325014921",
+    image: "/research/paper_5.jpg"
+  }
 ]
 

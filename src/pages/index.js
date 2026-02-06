@@ -459,28 +459,64 @@ const ResearchTitle = styled.h2`
 `
 
 const ResearchList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 1rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
 `
 
 const ResearchItem = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
   background-color: #f9f9f9;
-  padding: 0.7rem 0.9rem;
+  padding: 0;
   border-radius: 4px;
   border-left: 3px solid #0066cc;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
+`
+
+const ResearchItemImageWrap = styled.a`
+  flex-shrink: 0;
+  width: 180px;
+  min-height: 120px;
+  display: block;
+  background-color: #e8e8e8;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: 160px;
+  }
+`
+
+const ResearchItemImage = styled.img`
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  object-fit: cover;
+  display: block;
+  
+  @media (max-width: 768px) {
+    min-height: 160px;
+  }
+`
+
+const ResearchItemContent = styled.div`
+  padding: 0.7rem 0.9rem;
+  flex: 1;
+  min-width: 0;
   
   @media (max-width: 768px) {
     padding: 0.6rem 0.8rem;
@@ -501,6 +537,7 @@ const ResearchItemTitle = styled.h3`
     font-size: 0.9rem;
   }
 `
+
 
 const ResearchItemLink = styled.a`
   color: #0066cc;
@@ -758,7 +795,7 @@ const IndexPage = () => {
                   <Subtitle>
                     <CorePaperLabel>Core Paper - Thermal Comfort in Sight</CorePaperLabel> - 
                     [<CorePaperLink href="https://github.com/Sijie-Yang/VATA" target="_blank" rel="noopener noreferrer">Github</CorePaperLink>] 
-                    [<CorePaperLink href={researchPapers[0].link} target="_blank" rel="noopener noreferrer">Paper</CorePaperLink>] 
+                    [<CorePaperLink href={researchPapers.find(p => p.id === 1).link} target="_blank" rel="noopener noreferrer">Paper</CorePaperLink>] 
                     [<CorePaperLink as={Link} to="/dataset">Dataset</CorePaperLink>]
                     - Yang, S., Chong, A., Liu, P., & Biljecki, F. (2025). Thermal comfort in sight: Thermal affordance and its visual assessment for sustainable streetscape design. <JournalName>Building and Environment</JournalName>, 271, 112569.
                   </Subtitle>
@@ -933,20 +970,31 @@ const IndexPage = () => {
             <ResearchList>
               {researchPapers.map((paper) => (
                 <ResearchItem key={paper.id}>
-                  <ResearchItemTitle>
-                    <ResearchItemLink 
-                      href={paper.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      {paper.title}
-                    </ResearchItemLink>
-                    <ResearchItemVenue>{paper.venue}</ResearchItemVenue>
-                    <ResearchItemYear>{paper.year}</ResearchItemYear>
-                  </ResearchItemTitle>
-                  <ResearchItemAuthors>
-                    {paper.authors}
-                  </ResearchItemAuthors>
+                  {paper.image && (
+                    <ResearchItemImageWrap href={paper.link} target="_blank" rel="noopener noreferrer" aria-hidden>
+                      <ResearchItemImage
+                        src={paper.image}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </ResearchItemImageWrap>
+                  )}
+                  <ResearchItemContent>
+                    <ResearchItemTitle>
+                      <ResearchItemLink 
+                        href={paper.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        {paper.title}
+                      </ResearchItemLink>
+                      <ResearchItemVenue>{paper.venue}</ResearchItemVenue>
+                      <ResearchItemYear>{paper.year}</ResearchItemYear>
+                    </ResearchItemTitle>
+                    <ResearchItemAuthors>
+                      {paper.authors}
+                    </ResearchItemAuthors>
+                  </ResearchItemContent>
                 </ResearchItem>
               ))}
             </ResearchList>

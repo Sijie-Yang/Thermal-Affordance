@@ -46,24 +46,91 @@ const Header = styled.header`
   }
 `
 
-const HeaderLogo = styled.a`
+const HeaderLogoWrapper = styled.div`
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    margin-left: 5px;
+  }
+`
+
+/* DoA: show at natural aspect ratio (1000:458) so full logo is visible */
+const HeaderLogoDoA = styled.a`
+  display: block;
+  width: 153px;
+  height: 70px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+  
+  .gatsby-image-wrapper {
+    width: 153px !important;
+    height: 70px !important;
+    max-width: 153px !important;
+  }
+  
+  .gatsby-image-wrapper img {
+    object-fit: contain !important;
+  }
+  
+  @media (max-width: 768px) {
+    width: 131px;
+    height: 60px;
+    .gatsby-image-wrapper { width: 131px !important; height: 60px !important; max-width: 131px !important; }
+  }
+  
+  @media (max-width: 480px) {
+    width: 109px;
+    height: 50px;
+    .gatsby-image-wrapper { width: 109px !important; height: 50px !important; max-width: 109px !important; }
+  }
+`
+
+/* UAL: separate cell with large left margin so it never overlaps DoA */
+const HeaderLogoUAL = styled.a`
+  display: block;
   width: 150px;
   height: 70px;
+  flex-shrink: 0;
   overflow: hidden;
-  margin-left: 20px;
-  display: block;
   text-decoration: none;
+  margin-left: 24px;
+  position: relative;
+  z-index: 1;
+  
+  .gatsby-image-wrapper {
+    width: 150px !important;
+    height: 70px !important;
+    max-width: 150px !important;
+  }
+  
+  .gatsby-image-wrapper img {
+    object-fit: contain !important;
+  }
   
   @media (max-width: 768px) {
     width: 120px;
     height: 60px;
-    margin-left: 10px;
+    margin-left: 16px;
+    .gatsby-image-wrapper { width: 120px !important; height: 60px !important; max-width: 120px !important; }
   }
   
   @media (max-width: 480px) {
     width: 100px;
     height: 50px;
-    margin-left: 5px;
+    margin-left: 12px;
+    .gatsby-image-wrapper { width: 100px !important; height: 50px !important; max-width: 100px !important; }
   }
 `
 
@@ -271,18 +338,30 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
       <Header>
-        <HeaderLogo href="https://ual.sg" target="_blank" rel="noopener noreferrer">
-          <StaticImage
-            src="../images/icon_ual.webp"
-            alt="Thermal Affordance Logo"
-            placeholder="blurred"
-            layout="fixed"
-            width={150}
-            height={80}
-            objectFit="cover"
-            objectPosition="center 25%"
-          />
-        </HeaderLogo>
+        <HeaderLogoWrapper>
+          <HeaderLogoDoA href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
+            <StaticImage
+              src="../images/DoA Logo.jpg"
+              alt="DoA Logo"
+              placeholder="blurred"
+              layout="fixed"
+              width={153}
+              height={70}
+              imgStyle={{ objectFit: "contain" }}
+            />
+          </HeaderLogoDoA>
+          <HeaderLogoUAL href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
+            <StaticImage
+              src="../images/UAL Logo.jpg"
+              alt="UAL Logo"
+              placeholder="blurred"
+              layout="fixed"
+              width={150}
+              height={70}
+              imgStyle={{ objectFit: "contain" }}
+            />
+          </HeaderLogoUAL>
+        </HeaderLogoWrapper>
         <HamburgerButton 
           $isOpen={isMenuOpen} 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
