@@ -73,6 +73,7 @@ const HeaderLogoDoA = styled.a`
   text-decoration: none;
   position: relative;
   z-index: 2;
+  background-color: #fff;
   
   .gatsby-image-wrapper {
     width: 153px !important;
@@ -108,6 +109,7 @@ const HeaderLogoUAL = styled.a`
   margin-left: 24px;
   position: relative;
   z-index: 1;
+  background-color: #fff;
   
   .gatsby-image-wrapper {
     width: 150px !important;
@@ -341,7 +343,7 @@ const Layout = ({ children }) => {
         <HeaderLogoWrapper>
           <HeaderLogoDoA href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
             <StaticImage
-              src="../images/DoA Logo.jpg"
+              src="../images/DoA_Logo_white.jpg"
               alt="DoA Logo"
               placeholder="blurred"
               layout="fixed"
@@ -352,7 +354,7 @@ const Layout = ({ children }) => {
           </HeaderLogoDoA>
           <HeaderLogoUAL href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
             <StaticImage
-              src="../images/UAL Logo.jpg"
+              src="../images/UAL_Logo_white.jpg"
               alt="UAL Logo"
               placeholder="blurred"
               layout="fixed"

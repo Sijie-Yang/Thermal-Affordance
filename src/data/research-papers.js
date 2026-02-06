@@ -6,22 +6,13 @@
 // Ordered by year, newest first
 export const researchPapers = [
   {
-    id: 3,
-    title: "Evaluating Greenery's Contribution to Urban Thermal Comfort in Hot Arid Climates: A Systematic Review",
-    authors: "Binabid J, Anteet Q, Alawwad R",
-    venue: "Sustainability",
-    year: "2026",
-    link: "https://www.mdpi.com/2071-1050/18/1/460",
-    image: "/research/paper_3.jpg"
-  },
-  {
     id: 6,
     title: "Visual determinants of outdoor thermal comfort: integrating explainable AI and perceptual assessments",
     authors: "Zhu, L., Samuelson, H. W., Biljecki, F., Tan, C. L., Wong, N. H., & Ang, Y. Q.",
     venue: "Building and Environment",
     year: "2026",
     link: "https://www.sciencedirect.com/science/article/pii/S0360132326001289",
-    image: "/research/paper_6.jpg"
+    image: "/research/paper_visual.jpg"
   },
   {
     id: 1,
@@ -30,7 +21,7 @@ export const researchPapers = [
     venue: "Building and Environment",
     year: "2025",
     link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325000514?via%3Dihub",
-    image: "/research/paper_1.jpg"
+    image: "/research/paper_singapore.jpg"
   },
   {
     id: 2,
@@ -39,7 +30,7 @@ export const researchPapers = [
     venue: "Sustainable Cities and Society",
     year: "2025",
     link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725005220",
-    image: "/research/paper_2.jpg"
+    image: "/research/paper_neighbourhood.jpg"
   },
   {
     id: 4,
@@ -48,7 +39,7 @@ export const researchPapers = [
     venue: "Sustainable Cities and Society",
     year: "2025",
     link: "https://www.sciencedirect.com/science/article/abs/pii/S2210670725009242",
-    image: "/research/paper_4.jpg"
+    image: "/research/paper_hong_kong_street.jpg"
   },
   {
     id: 5,
@@ -57,7 +48,7 @@ export const researchPapers = [
     venue: "Building and Environment",
     year: "2025",
     link: "https://www.sciencedirect.com/science/article/abs/pii/S0360132325014921",
-    image: "/research/paper_5.jpg"
+    image: "/research/paper_arcade_street.png"
   }
 ]
 
