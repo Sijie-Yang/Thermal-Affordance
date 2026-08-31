@@ -1,0 +1,24 @@
+{
+  "crs": "EPSG:4326",
+  "h3_resolution": 9,
+  "layers": {
+    "vata_points": {
+      "geometry": "Point (longitude, latitude)",
+      "fields": {
+        "image_id": "Source image identifier (string)",
+        "VATA": "Predicted thermal_affordance score (number); not degrees Celsius"
+      }
+    },
+    "vata_hex": {
+      "geometry": "Polygon",
+      "fields": {
+        "h3": "H3 cell identifier at resolution 9 (string)",
+        "VATA": "Mean VATA of points in this cell (number)",
+        "n": "Number of contributing points (integer)",
+        "VATA_std": "Sample standard deviation (number or null when n = 1)"
+      }
+    }
+  },
+  "web_points_json": "Array of [longitude, latitude, VATA] rows; scores rounded for display",
+  "web_hex_geojson": "FeatureCollection with the vata_hex properties"
+}

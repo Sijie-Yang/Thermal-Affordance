@@ -11,15 +11,21 @@
     "gatsby-transformer-remark": "^6.0.0",
     "gatsby-transformer-sharp": "^5.13.1",
     "mapbox-gl": "^2.15.0",
+    "maplibre-gl": "^6.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sharp": "^0.35.4",
     "styled-components": "^6.0.0"
   },
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "npm run build && gh-pages -d public",
+    "data:build": "python3 scripts/build_downloads.py",
+    "data:check": "python3 scripts/build_downloads.py --check",
+    "prebuild": "npm run data:check",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
     "gh-pages": "^6.2.0"

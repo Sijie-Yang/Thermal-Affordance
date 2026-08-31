@@ -1,0 +1,171 @@
+{
+  "h3_resolution": 9,
+  "score": "thermal_affordance (VATA)",
+  "cities": [
+    {
+      "city": "singapore",
+      "n_points": 92233,
+      "n_hex": 4014,
+      "vata_mean": 2.1333968508384182,
+      "point_gpkg": "singapore_VATA_perception_points.gpkg",
+      "hex_geojson": "singapore_VATA_hex.geojson",
+      "hex_gpkg": "singapore_VATA_hex.gpkg",
+      "label": "Singapore",
+      "center": [
+        103.8198,
+        1.3521
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "singapore_VATA.zip",
+        "bytes": 4613137,
+        "sha256": "d3eac1589b90151c5e31791463ae311a71eb40e372ccd9ceeed14d3054864d80"
+      }
+    },
+    {
+      "city": "hongkong",
+      "n_points": 16955,
+      "n_hex": 2792,
+      "vata_mean": 1.7324007431443411,
+      "point_gpkg": "hongkong_VATA_perception_points.gpkg",
+      "hex_geojson": "hongkong_VATA_hex.geojson",
+      "hex_gpkg": "hongkong_VATA_hex.gpkg",
+      "label": "Hong Kong",
+      "center": [
+        114.1694,
+        22.3193
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "hongkong_VATA.zip",
+        "bytes": 1338219,
+        "sha256": "e5a433c74f2b594b0edb2f5d0520a0892ae55869bee374f3cb29052fd5268b5e"
+      }
+    },
+    {
+      "city": "capetown",
+      "n_points": 169843,
+      "n_hex": 9623,
+      "vata_mean": 1.2021979780491456,
+      "point_gpkg": "capetown_VATA_perception_points.gpkg",
+      "hex_geojson": "capetown_VATA_hex.geojson",
+      "hex_gpkg": "capetown_VATA_hex.gpkg",
+      "label": "Cape Town",
+      "center": [
+        18.4241,
+        -33.9249
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "capetown_VATA.zip",
+        "bytes": 11197913,
+        "sha256": "7f774ac8f0060fadbaf2d58937cbcb518e38a26f635aae9eedf6e2ec87e32e4e"
+      }
+    },
+    {
+      "city": "johannesburg",
+      "n_points": 172225,
+      "n_hex": 9823,
+      "vata_mean": 1.3507889470718029,
+      "point_gpkg": "johannesburg_VATA_perception_points.gpkg",
+      "hex_geojson": "johannesburg_VATA_hex.geojson",
+      "hex_gpkg": "johannesburg_VATA_hex.gpkg",
+      "label": "Johannesburg",
+      "center": [
+        28.0473,
+        -26.2041
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "johannesburg_VATA.zip",
+        "bytes": 11404515,
+        "sha256": "d06a713a325bca920071cdb7a115f6f44d4ea6014356a94d4eb684988906f5ef"
+      }
+    },
+    {
+      "city": "melbourne",
+      "n_points": 226546,
+      "n_hex": 12225,
+      "vata_mean": 1.864156619709778,
+      "point_gpkg": "melbourne_VATA_perception_points.gpkg",
+      "hex_geojson": "melbourne_VATA_hex.geojson",
+      "hex_gpkg": "melbourne_VATA_hex.gpkg",
+      "label": "Melbourne",
+      "center": [
+        144.9631,
+        -37.8136
+      ],
+      "zoom": 10,
+      "download": {
+        "file": "melbourne_VATA.zip",
+        "bytes": 14563268,
+        "sha256": "3da0893f6696be896ed973511b20b0b9a34f13632cdb0dec01c0872695e4c96c"
+      }
+    },
+    {
+      "city": "newyork",
+      "n_points": 54377,
+      "n_hex": 6467,
+      "vata_mean": 1.4134781020193454,
+      "point_gpkg": "newyork_VATA_perception_points.gpkg",
+      "hex_geojson": "newyork_VATA_hex.geojson",
+      "hex_gpkg": "newyork_VATA_hex.gpkg",
+      "label": "New York",
+      "center": [
+        -74.006,
+        40.7128
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "newyork_VATA.zip",
+        "bytes": 3984755,
+        "sha256": "d190428f5953e9a498dc17062771bac42370327b4dedb59626babcf28864fa9e"
+      }
+    },
+    {
+      "city": "rio",
+      "n_points": 55233,
+      "n_hex": 5826,
+      "vata_mean": 1.3620799279382594,
+      "point_gpkg": "rio_VATA_perception_points.gpkg",
+      "hex_geojson": "rio_VATA_hex.geojson",
+      "hex_gpkg": "rio_VATA_hex.gpkg",
+      "label": "Rio de Janeiro",
+      "center": [
+        -43.1729,
+        -22.9068
+      ],
+      "zoom": 11,
+      "download": {
+        "file": "rio_VATA.zip",
+        "bytes": 3978878,
+        "sha256": "ba1929e65a01af33e0aef6a63c196aae849cf2133469583658046ae8bf7785dc"
+      }
+    },
+    {
+      "city": "tokyo",
+      "n_points": 175515,
+      "n_hex": 11554,
+      "vata_mean": 1.4589620873937783,
+      "point_gpkg": "tokyo_VATA_perception_points.gpkg",
+      "hex_geojson": "tokyo_VATA_hex.geojson",
+      "hex_gpkg": "tokyo_VATA_hex.gpkg",
+      "label": "Tokyo",
+      "center": [
+        139.6917,
+        35.6895
+      ],
+      "zoom": 10,
+      "download": {
+        "file": "tokyo_VATA.zip",
+        "bytes": 11533013,
+        "sha256": "3c7093a404fb2cf66e6b0a3e1e86a138face72004e50868c7d4849174eb1b1ef"
+      }
+    }
+  ],
+  "download": {
+    "file": "all_cities_VATA.zip",
+    "bytes": 62599033,
+    "sha256": "81669e798267346cd783621a6e83fbe10ec50978850f0e166144f81adbfb66f1"
+  }
+}

@@ -1,0 +1,9 @@
+DATA USAGE / LICENSE STATUS
+
+A standalone license for these data exports has not been confirmed in this
+repository. This notice is not a license grant. Do not assume that any software
+license also covers the data or underlying street-view imagery.
+
+Before reusing or redistributing the data, confirm the applicable permissions
+with the research team: sijiey@u.nus.edu or filip@nus.edu.sg.
+Include the citation in README.md when referring to this research.

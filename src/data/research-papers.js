@@ -1,5 +1,7 @@
 // Research papers data for Thermal Affordance in Research section
 // Add new papers by adding objects to this array
+// Feature a paper in the opening section with core: true, fullTitle and citation.
+// Its code and dataset links are optional. Other papers remain in the research collection.
 
 // Paper images: put files in static/research/ (e.g. paper_1.jpg, paper_2.jpg)
 // Image path is relative to static folder: use "/research/paper_1.jpg"
@@ -16,6 +18,13 @@ export const researchPapers = [
   },
   {
     id: 1,
+    core: true,
+    volume: "271",
+    articleNumber: "112569",
+    fullTitle: "Thermal comfort in sight: Thermal affordance and its visual assessment for sustainable streetscape design",
+    citation: "Yang, S., Chong, A., Liu, P., & Biljecki, F. (2025). Thermal comfort in sight: Thermal affordance and its visual assessment for sustainable streetscape design. Building and Environment, 271, 112569.",
+    code: "https://github.com/Sijie-Yang/VATA",
+    dataset: "/dataset/",
     title: "Thermal Comfort in Sight: Thermal Affordance and Its Visual Assessment",
     authors: "Yang, S., Chong, A., Liu, P., & Biljecki, F.",
     venue: "Building and Environment",
@@ -51,4 +60,3 @@ export const researchPapers = [
     image: "/research/paper_arcade_street.png"
   }
 ]
-

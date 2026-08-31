@@ -41,7 +41,7 @@ The website features:
 Download thermal affordance datasets for research purposes:
 
 - **Singapore Dataset** - VATA perception points for Singapore
-- **Multi-city Dataset** - Coming soon
+- **Multi-city Dataset** - Eight cities, with point and H3 resolution 9 hex GeoPackages
 
 Visit the [Dataset & Mapping](https://thermal-affordance.ual.sg/#map) section on our website for downloads.
 
@@ -60,7 +60,7 @@ Our research builds on and contributes to the growing field of thermal comfort a
 
 This website is built with:
 - **Gatsby** - React-based static site generator
-- **Mapbox GL** - Interactive mapping
+- **MapLibre GL** - Interactive mapping
 - **Styled Components** - Component styling
 - **Responsive Design** - Mobile-friendly interface
 
@@ -105,7 +105,7 @@ If you use our work in your research, please cite:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+A standalone data reuse license has not been confirmed in this repository. See `static/data/LICENSE.txt` and contact the research team before reuse. Do not assume that a software license also applies to the data.
 
 ## 🙏 Acknowledgments
 
@@ -114,3 +114,27 @@ This research is supported by the National University of Singapore and the Singa
 ---
 
 **Thermal Affordance** - Enhancing urban thermal comfort through visual assessment and sustainable streetscape design.
+
+## Data releases
+
+The website reads city counts, download filenames, sizes and SHA-256 checksums from
+`static/data/cities.json`. Do not maintain a separate frontend city catalog.
+
+```bash
+# Package existing GPKGs with documentation and refresh manifest metadata
+npm run data:build
+
+# Validate ZIP contents against source files and confirm metadata
+npm run data:check
+```
+
+`npm run build` runs the data check first and fails if a ZIP is missing, corrupt
+or stale. Include the generated ZIPs, GPKGs, web JSON/GeoJSON, documentation and
+manifest in the release/source checkout; an untracked local file will not appear
+in a fresh checkout. Original parquet re-export is supported by
+`scripts/export_tcis_web.py`, including web point JSON and the same ZIP builder.
+
+Use `/dataset/` for a dedicated explorer. City, layer and scale are shareable,
+for example `?city=tokyo&layer=hex&scale=within-city#map`. Data is loaded as the
+map approaches the viewport; the eight most recent city/layer files are cached
+in memory. Within-city percentiles are unweighted within the selected layer.

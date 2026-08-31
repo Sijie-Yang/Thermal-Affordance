@@ -1,400 +1,107 @@
-import * as React from "react"
-import { createGlobalStyle } from "styled-components"
-import styled from "styled-components"
+import React, { useEffect, useState } from "react"
+import { withPrefix } from "gatsby"
+import styled, { createGlobalStyle } from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 
-// Global styles
 const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #152639; background: #f6f8fa; margin: 0; }
+  img { max-width: 100%; height: auto; }
+  a { color: #155eae; text-underline-offset: 3px; }
+  button, select, input { font: inherit; }
+  button, a, select, summary { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 3px solid #2975c4; outline-offset: 4px; }
+  section[id] { scroll-margin-top: 88px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 `
-
-// Styled components
 const Header = styled.header`
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
-  
-  @media (max-width: 768px) {
-    padding: 0.75rem;
-  }
+  height: 76px; position: sticky; top: 0; z-index: 1000; background: #fffffff5;
+  border-bottom: 1px solid #dce2e9; backdrop-filter: blur(10px);
+  > div { max-width: 1280px; height: 100%; margin: auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  @media (max-width: 760px) { height: 68px; > div { padding: 0 16px; } }
+  @media (max-width: 400px) { > div { gap: 8px; } }
 `
-
-const HeaderLogoWrapper = styled.div`
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 10;
-  
-  @media (max-width: 768px) {
-    margin-left: 10px;
-  }
-  
-  @media (max-width: 480px) {
-    margin-left: 5px;
-  }
+const Logos = styled.div`
+  display: flex; align-items: center; gap: 18px; flex-shrink: 0;
+  a { display: flex; align-items: center; min-height: 44px; }
+  @media (max-width: 400px) { gap: 10px; }
 `
-
-/* DoA: show at natural aspect ratio (1000:458) so full logo is visible */
-const HeaderLogoDoA = styled.a`
-  display: block;
-  width: 153px;
-  height: 70px;
-  flex-shrink: 0;
-  overflow: hidden;
-  text-decoration: none;
-  position: relative;
-  z-index: 2;
-  background-color: #fff;
-  
-  .gatsby-image-wrapper {
-    width: 153px !important;
-    height: 70px !important;
-    max-width: 153px !important;
-  }
-  
-  .gatsby-image-wrapper img {
-    object-fit: contain !important;
-  }
-  
-  @media (max-width: 768px) {
-    width: 131px;
-    height: 60px;
-    .gatsby-image-wrapper { width: 131px !important; height: 60px !important; max-width: 131px !important; }
-  }
-  
-  @media (max-width: 480px) {
-    width: 109px;
-    height: 50px;
-    .gatsby-image-wrapper { width: 109px !important; height: 50px !important; max-width: 109px !important; }
-  }
-`
-
-/* UAL: separate cell with large left margin so it never overlaps DoA */
-const HeaderLogoUAL = styled.a`
-  display: block;
-  width: 150px;
-  height: 70px;
-  flex-shrink: 0;
-  overflow: hidden;
-  text-decoration: none;
-  margin-left: 24px;
-  position: relative;
-  z-index: 1;
-  background-color: #fff;
-  
-  .gatsby-image-wrapper {
-    width: 150px !important;
-    height: 70px !important;
-    max-width: 150px !important;
-  }
-  
-  .gatsby-image-wrapper img {
-    object-fit: contain !important;
-  }
-  
-  @media (max-width: 768px) {
-    width: 120px;
-    height: 60px;
-    margin-left: 16px;
-    .gatsby-image-wrapper { width: 120px !important; height: 60px !important; max-width: 120px !important; }
-  }
-  
-  @media (max-width: 480px) {
-    width: 100px;
-    height: 50px;
-    margin-left: 12px;
-    .gatsby-image-wrapper { width: 100px !important; height: 50px !important; max-width: 100px !important; }
-  }
-`
-
 const Nav = styled.nav`
-  display: flex;
-  gap: 1.5rem;
-  
-  @media (max-width: 768px) {
-    position: fixed;
-    top: 70px;
-    left: ${props => props.$isOpen ? '0' : '-100%'};
-    width: 100%;
-    height: calc(100vh - 70px);
-    background-color: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    padding: 2rem 1rem;
-    gap: 1rem;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    overflow-y: auto;
+  display: flex; align-items: center; gap: 22px;
+  a { display: flex; align-items: center; min-height: 44px; color: #586577; text-decoration: none; font-size: 14px; font-weight: 600; border-bottom: 2px solid transparent; }
+  a:hover, a[aria-current] { color: #155eae; border-color: #155eae; }
+  @media (max-width: 1000px) { gap: 14px; }
+  @media (max-width: 760px) {
+    display: ${p => p.$open ? 'flex' : 'none'}; position: absolute; top: 68px; left: 0; right: 0;
+    padding: 16px 24px; background: #fff; border-bottom: 1px solid #dce2e9; box-shadow: 0 12px 24px #14263a12;
+    align-items: stretch; flex-direction: column; gap: 4px;
   }
 `
-
-const NavLink = styled.a`
-  text-decoration: none;
-  color: black;
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: black;
-    transition: width 0.3s ease;
-  }
-  
-  &:hover::after {
-    width: 100%;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #eee;
-    
-    &::after {
-      display: none;
-    }
-    
-    &:hover {
-      color: #0066cc;
-    }
-  }
+const MenuButton = styled.button`
+  display: none; min-height: 44px; padding: 8px 12px; border: 1px solid #dce2e9; border-radius: 6px; background: white; color: #152639;
+  @media (max-width: 760px) { display: block; }
+  @media (max-width: 400px) { padding: 8px; }
 `
-
-const MainContent = styled.main`
-  padding-top: 90px;
-  
-  @media (max-width: 768px) {
-    padding-top: 70px;
-  }
+const Skip = styled.a`
+  position: fixed; top: -100px; left: 12px; z-index: 1002; padding: 10px 16px; background: #fff;
+  &:focus { top: 10px; }
 `
+const links = [['home', 'Overview'], ['map', 'Explore data'], ['concept', 'About VATA'], ['method', 'Method'], ['research', 'Research'], ['team', 'Team']]
 
-// 新增的 Styled components
-const Sidebar = styled.div`
-  position: fixed;
-  right: -200px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 200px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  transition: right 0.3s ease;
-  z-index: 999;
-  border-radius: 10px 0 0 10px;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-
-  &:hover {
-    right: 0;
-  }
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-
-const SidebarLink = styled.a`
-  display: block;
-  padding: 0.7rem 0;
-  color: black;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  line-height: 1.4;
-
-  &:hover {
-    color: #0066cc;
-  }
-`
-
-const SidebarNumber = styled.span`
-  margin-right: 0.5rem;
-  font-weight: bold;
-`
-
-const HamburgerButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001;
-  
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-right: 10px;
-  }
-  
-  span {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-    
-    &:nth-child(1) {
-      transform: ${props => props.$isOpen ? 'rotate(45deg) translate(8px, 8px)' : 'none'};
-    }
-    
-    &:nth-child(2) {
-      opacity: ${props => props.$isOpen ? '0' : '1'};
-    }
-    
-    &:nth-child(3) {
-      transform: ${props => props.$isOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none'};
-    }
-  }
-`
-
-// Layout component
-const Layout = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  
-  // Smooth scroll function
-  const scrollToSection = (sectionId) => (e) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      
-      // Close menu on mobile after clicking
-      setIsMenuOpen(false);
-    }
-  };
-
-  // Header opacity change on scroll
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.backgroundColor = window.scrollY > 0 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 1)';
+export default function Layout({ children }) {
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('home')
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll('main section[id]'))
+    const update = () => {
+      let current = sections[0]?.id || ''
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 150) current = section.id
       }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  // Close menu when clicking outside
-  React.useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isMenuOpen && !e.target.closest('nav') && !e.target.closest('button')) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    if (isMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      if (current === 'property') current = 'concept'
+      if (current === 'planning') current = 'method'
+      setActive(current)
     }
-    
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
-
-  return (
-    <>
-      <GlobalStyle />
-      <Header>
-        <HeaderLogoWrapper>
-          <HeaderLogoDoA href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
-            <StaticImage
-              src="../images/DoA_Logo_white.jpg"
-              alt="DoA Logo"
-              placeholder="blurred"
-              layout="fixed"
-              width={153}
-              height={70}
-              imgStyle={{ objectFit: "contain" }}
-            />
-          </HeaderLogoDoA>
-          <HeaderLogoUAL href="https://ual.sg" target="_blank" rel="noopener noreferrer" title="UAL">
-            <StaticImage
-              src="../images/UAL_Logo_white.jpg"
-              alt="UAL Logo"
-              placeholder="blurred"
-              layout="fixed"
-              width={150}
-              height={70}
-              imgStyle={{ objectFit: "contain" }}
-            />
-          </HeaderLogoUAL>
-        </HeaderLogoWrapper>
-        <HamburgerButton 
-          $isOpen={isMenuOpen} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </HamburgerButton>
-        <Nav $isOpen={isMenuOpen}>
-          <NavLink href="#home" onClick={scrollToSection('home')}>Home</NavLink>
-          <NavLink href="#concept" onClick={scrollToSection('concept')}>Concept Description</NavLink>
-          <NavLink href="#method" onClick={scrollToSection('method')}>Paper Introduction</NavLink>
-          <NavLink href="#map" onClick={scrollToSection('map')}>Dataset & Mapping</NavLink>
-          <NavLink href="#research" onClick={scrollToSection('research')}>In Research</NavLink>
-          <NavLink href="#team" onClick={scrollToSection('team')}>Team & Contact</NavLink>
-        </Nav>
-      </Header>
-      <Sidebar>
-        <SidebarLink href="#home" onClick={scrollToSection('home')}><SidebarNumber>1.</SidebarNumber>Cover</SidebarLink>
-        <SidebarLink href="#concept" onClick={scrollToSection('concept')}><SidebarNumber>2.</SidebarNumber>Thermal Affordance</SidebarLink>
-        <SidebarLink href="#property" onClick={scrollToSection('property')}><SidebarNumber>3.</SidebarNumber>Property of Thermal Affordance</SidebarLink>
-        <SidebarLink href="#method" onClick={scrollToSection('method')}><SidebarNumber>4.</SidebarNumber>Computational Framework of VATA</SidebarLink>
-        <SidebarLink href="#planning" onClick={scrollToSection('planning')}><SidebarNumber>5.</SidebarNumber>Planning Application of VATA</SidebarLink>
-        <SidebarLink href="#map" onClick={scrollToSection('map')}><SidebarNumber>6.</SidebarNumber>Dataset & Mapping</SidebarLink>
-        <SidebarLink href="#research" onClick={scrollToSection('research')}><SidebarNumber>7.</SidebarNumber>Thermal Affordance in Research</SidebarLink>
-        <SidebarLink href="#team" onClick={scrollToSection('team')}><SidebarNumber>8.</SidebarNumber>Team & Contact</SidebarLink>
-      </Sidebar>
-      <MainContent>{children}</MainContent>
-    </>
-  )
+    update(); window.addEventListener('scroll', update, { passive: true })
+    return () => window.removeEventListener('scroll', update)
+  }, [])
+  useEffect(() => {
+    const close = event => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        document.getElementById('menu-toggle')?.focus()
+      } else if (event.type === 'click' && !event.target.closest('header')) setOpen(false)
+    }
+    if (open) { document.addEventListener('keydown', close); document.addEventListener('click', close) }
+    return () => { document.removeEventListener('keydown', close); document.removeEventListener('click', close) }
+  }, [open])
+  const navigate = (event, id) => {
+    setOpen(false)
+    const target = document.getElementById(id)
+    if (!target) return // Preserve navigation to the homepage when used from /dataset.
+    event.preventDefault()
+    const url = new URL(window.location.href); url.hash = id
+    window.history.pushState(window.history.state, '', url)
+    target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+    setActive(id)
+  }
+  return <>
+    <GlobalStyle />
+    <Skip href="#main-content">Skip to content</Skip>
+    <Header><div>
+      <Logos>
+        <a href={withPrefix('/')} aria-label="Thermal Affordance home"><StaticImage src="../images/DoA_Logo_white.jpg" alt="NUS Department of Architecture" width={105} height={48} layout="fixed" imgStyle={{ objectFit: 'contain' }} /></a>
+        <a href="https://ual.sg" target="_blank" rel="noopener noreferrer" aria-label="Urban Analytics Lab"><StaticImage src="../images/UAL_Logo_white.jpg" alt="Urban Analytics Lab" width={103} height={48} layout="fixed" imgStyle={{ objectFit: 'contain' }} /></a>
+      </Logos>
+      <MenuButton id="menu-toggle" type="button" aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen(value => !value)}>{open ? 'Close' : 'Menu'}</MenuButton>
+      <Nav id="primary-nav" aria-label="Primary navigation" $open={open}>
+        {links.map(([id, label]) => <a key={id} href={withPrefix(`/#${id}`)} aria-current={active === id ? 'location' : undefined} onClick={event => navigate(event, id)}>{label}</a>)}
+      </Nav>
+    </div></Header>
+    <main id="main-content" tabIndex={-1}>{children}</main>
+  </>
 }
-
-export default Layout
