@@ -3,3 +3,11 @@ node_modules/
 public
 __pycache__/
 .DS_Store
+
+# Larger than GitHub's 100 MB blob limit. The site links these to a release.
+static/data/capetown_VATA_perception_points.gpkg
+static/data/johannesburg_VATA_perception_points.gpkg
+static/data/melbourne_VATA_perception_points.gpkg
+static/data/tokyo_VATA_perception_points.gpkg
+static/data/melbourne_VATA.zip
+static/data/all_cities_VATA.zip

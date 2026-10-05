@@ -6,10 +6,17 @@ SHA-256 checksums are listed in cities.json on the website.
 
 Each city ZIP contains two GeoPackages, this guide, schema.json and LICENSE.txt:
 
-- *_VATA_perception_points.gpkg: vata_points layer, street-view image locations
-  and predicted thermal_affordance (VATA) values.
+- *_VATA_perception_points.gpkg: vata_points layer. The map shows VATA only.
+  The download also stores image features and predicted visual-perceptual
+  indicators for every point in all eight cities. Field names are listed in
+  schema.json.
 - *_VATA_hex.gpkg: vata_hex layer, H3 resolution 9 cells containing the mean
-  VATA, point count and standard deviation of the points in each cell.
+  VATA, point count and standard deviation of the points in each cell. Hexes
+  do not carry the point-level features.
+
+Melbourne and the combined eight-city archive exceed GitHub's file-size limit.
+The website links those two downloads to a GitHub release. The other city
+archives in the repository contain the same full point tables.
 
 Coordinates use EPSG:4326 (longitude, latitude). Open GeoPackages in a GIS tool.
 VATA represents visual thermal affordance; it is not an air-temperature reading

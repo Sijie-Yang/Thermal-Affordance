@@ -14,6 +14,7 @@ import json
 from pathlib import Path
 
 from build_downloads import build
+from point_features import feature_columns
 
 import geopandas as gpd
 import h3
@@ -83,13 +84,18 @@ def _hex_poly(cell: str) -> Polygon:
 
 
 def export_city(parquet_path: Path, dest_dir: Path, city_id: str) -> dict:
-    frame = pd.read_parquet(parquet_path, columns=list(POINT_COLS))
+    # Map JSON stays longitude/latitude/VATA. Extra columns go only into the point download.
+    frame = pd.read_parquet(parquet_path)
     frame = frame.dropna(subset=["longitude", "latitude", "thermal_affordance"])
+    attributes = {
+        "image_id": frame["image_id"].astype(str),
+        "VATA": frame["thermal_affordance"].astype(float),
+    }
+    for source, name, _, _ in feature_columns():
+        if source in frame.columns:
+            attributes[name] = frame[source]
     points = gpd.GeoDataFrame(
-        {
-            "image_id": frame["image_id"].astype(str),
-            "VATA": frame["thermal_affordance"].astype(float),
-        },
+        attributes,
         geometry=[
             Point(lon, lat)
             for lon, lat in zip(frame["longitude"], frame["latitude"])

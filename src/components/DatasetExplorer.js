@@ -179,8 +179,8 @@ export default function DatasetExplorer() {
       </div>
       <Action type="button" onClick={() => setResetKey(key => key + 1)}>Reset view</Action>
       <DownloadActions aria-label="Dataset downloads">
-        <Download as="a" href={withPrefix(`/data/${city.download.file}`)} download>Download {city.label} · {formatSize(city.download.bytes)}</Download>
-        <Action as="a" className="all-cities" href={withPrefix(`/data/${ALL_DOWNLOAD.file}`)} download>Download all cities · {formatSize(ALL_DOWNLOAD.bytes)}</Action>
+        <Download as="a" href={city.download.url || withPrefix(`/data/${city.download.file}`)} download>Download {city.label} · {formatSize(city.download.bytes)}</Download>
+        <Action as="a" className="all-cities" href={ALL_DOWNLOAD.url || withPrefix(`/data/${ALL_DOWNLOAD.file}`)} download>Download all cities · {formatSize(ALL_DOWNLOAD.bytes)}</Action>
       </DownloadActions>
     </Toolbar>
     <Summary>
@@ -203,7 +203,7 @@ export default function DatasetExplorer() {
         <Action type="button" onClick={share}>Share view</Action>
         <span role="status">{shareStatus}</span>
       </div>
-      <p>Each ZIP includes point and hex GeoPackages, a README, schema and usage notes. Data reuse permission is not yet confirmed; contact the research team before reuse.</p>
+      <p>The map shows VATA only. Point downloads for all eight cities also include street-view image features and predicted indicators. Each ZIP includes point and hex GeoPackages, a README, schema and usage notes. Data reuse permission is not yet confirmed; contact the research team before reuse.</p>
       <p>Hover to inspect; click or tap to pin a card.</p>
     </Footer>
   </Surface>

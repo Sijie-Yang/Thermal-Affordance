@@ -18,8 +18,8 @@
       "zoom": 11,
       "download": {
         "file": "singapore_VATA.zip",
-        "bytes": 4613137,
-        "sha256": "d3eac1589b90151c5e31791463ae311a71eb40e372ccd9ceeed14d3054864d80"
+        "bytes": 36406275,
+        "sha256": "3e7389d59e013463afa551aa2bd48b7ea03b498f38cc352ff36c5f100df91950"
       }
     },
     {
@@ -38,8 +38,8 @@
       "zoom": 11,
       "download": {
         "file": "hongkong_VATA.zip",
-        "bytes": 1338219,
-        "sha256": "e5a433c74f2b594b0edb2f5d0520a0892ae55869bee374f3cb29052fd5268b5e"
+        "bytes": 8366915,
+        "sha256": "5097bd540e27d466a442b1008b034a4dfa942e7979aa764af14be8594e8e1d5d"
       }
     },
     {
@@ -58,8 +58,8 @@
       "zoom": 11,
       "download": {
         "file": "capetown_VATA.zip",
-        "bytes": 11197913,
-        "sha256": "7f774ac8f0060fadbaf2d58937cbcb518e38a26f635aae9eedf6e2ec87e32e4e"
+        "bytes": 80122705,
+        "sha256": "dc2cdb8a3f2c23ff2394fd17fb0c60a45a48c9e8e3a0af98d7bc1457a770488e"
       }
     },
     {
@@ -78,8 +78,8 @@
       "zoom": 11,
       "download": {
         "file": "johannesburg_VATA.zip",
-        "bytes": 11404515,
-        "sha256": "d06a713a325bca920071cdb7a115f6f44d4ea6014356a94d4eb684988906f5ef"
+        "bytes": 81090554,
+        "sha256": "d09cf0efc8c5a8a4f7e1cf69ffb91d06646f6751d3ba3932addb71b04277b78e"
       }
     },
     {
@@ -98,8 +98,9 @@
       "zoom": 10,
       "download": {
         "file": "melbourne_VATA.zip",
-        "bytes": 14563268,
-        "sha256": "3da0893f6696be896ed973511b20b0b9a34f13632cdb0dec01c0872695e4c96c"
+        "bytes": 106807877,
+        "sha256": "a5cd9feee841c659b8ad2ed18429b92d16f9f7a02a34607fe450865573379dfb",
+        "url": "https://github.com/Sijie-Yang/Thermal-Affordance/releases/download/downloads-2026-10-05/melbourne_VATA.zip"
       }
     },
     {
@@ -118,8 +119,8 @@
       "zoom": 11,
       "download": {
         "file": "newyork_VATA.zip",
-        "bytes": 3984755,
-        "sha256": "d190428f5953e9a498dc17062771bac42370327b4dedb59626babcf28864fa9e"
+        "bytes": 26545470,
+        "sha256": "34b82e302c786626d5b9b4b14f00cc55a520d1741053b1a9b96512cae3fc6740"
       }
     },
     {
@@ -138,8 +139,8 @@
       "zoom": 11,
       "download": {
         "file": "rio_VATA.zip",
-        "bytes": 3978878,
-        "sha256": "ba1929e65a01af33e0aef6a63c196aae849cf2133469583658046ae8bf7785dc"
+        "bytes": 26904977,
+        "sha256": "221efa687cdcc09684c674bbf07ad7f9d975fc8eaccbaad4ab157459775dc237"
       }
     },
     {
@@ -158,14 +159,15 @@
       "zoom": 10,
       "download": {
         "file": "tokyo_VATA.zip",
-        "bytes": 11533013,
-        "sha256": "3c7093a404fb2cf66e6b0a3e1e86a138face72004e50868c7d4849174eb1b1ef"
+        "bytes": 83924546,
+        "sha256": "cb0aac93244c5b25b0d13139cc2eb59963c2fd78b8fd6673a1a61528dca08566"
       }
     }
   ],
   "download": {
     "file": "all_cities_VATA.zip",
-    "bytes": 62599033,
-    "sha256": "81669e798267346cd783621a6e83fbe10ec50978850f0e166144f81adbfb66f1"
+    "bytes": 450147738,
+    "sha256": "4398d85c2eaa9090eb142054d037ccc694888a4cdaf96910e97a1993a4b944f5",
+    "url": "https://github.com/Sijie-Yang/Thermal-Affordance/releases/download/downloads-2026-10-05/all_cities_VATA.zip"
   }
 }
